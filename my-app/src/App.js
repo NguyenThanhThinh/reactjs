@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import contactsData from "./data/contacts.json";
 import './App.css';
 
+const showContact = data => (
+  <div className="contact" data-id="id" key={data.email}>
+    <span className="avatar small">☻</span>
+    <span className="title">{data.firstName} {data.lastName}</span>
+  </div>
+);
 class App extends Component {
   render() {
     return (
@@ -11,18 +18,8 @@ class App extends Component {
           <div id="list">
             <h1>Contacts</h1>
             <div className="content">
-              <div className="contact" data-id="id">
-                <span className="avatar small">☻</span>
-                <span className="title">Thinh Nguyen</span>
-              </div>
-              <div className="contact" data-id="id">
-                <span className="avatar small">☻</span>
-                <span className="title">Thanh Thinh</span>
-              </div>
-              <div className="contact" data-id="id">
-                <span className="avatar small">☻</span>
-                <span className="title">Messi</span>
-              </div>
+              {contactsData.map(showContact)}
+
             </div>
           </div>
           <div id="details">
